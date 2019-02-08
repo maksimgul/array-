@@ -1,0 +1,67 @@
+import java.util.Scanner;
+import java.util.Random;
+
+public class JavaApplication107 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        Random rnd = new Random();
+        Scanner scan = new Scanner(System.in);
+        System.out.print("Введите размер массива: n = ");
+        int n = scan.nextInt();
+        System.out.print("Введите размер массива: m = ");
+        int m = scan.nextInt();
+        int[][] arr = new int[n][m];
+        int[][] arr2 = new int[m][n];
+        int b = 1;
+        int k = 0;
+        int h = 0;
+
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[i].length; j++) {
+                arr[i][j] = rnd.nextInt(40) + 1;
+            }
+        }
+        for (int[] var : arr) {
+            for (int var2 : var) {
+                System.out.print(var2 + " ");
+            }
+            System.out.println("");
+        }
+        System.out.println("");
+        
+        // Сортировка пузырьком
+        
+        while (b != 0) {
+            b = 0;
+            for (int i = 0; i < arr.length - 1; i++) {
+                k = 0;
+                h = 0;
+                for (int j = 0; j < arr[i].length; j++) {
+                    k = k + arr[i][j];
+                    h = h + arr[i + 1][j];
+                }
+                k = k / m;
+                h = h / m;
+                if (k > h) {
+                    int[] y = arr[i];
+                    arr[i] = arr[i + 1];
+                    arr[i + 1] = y;
+                    b = 1;
+                }
+            }
+        }
+        System.out.println("");
+
+        for (int[] var : arr) {
+            int sum = 0;
+            for (int var2 : var) {
+                System.out.print(var2 + " ");
+                sum += var2;
+            }
+            System.out.println("|" + sum / m);
+        }
+    }
+}

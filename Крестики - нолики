@@ -1,0 +1,122 @@
+import java.util.Random;
+import java.util.Scanner;
+
+/*  Крестики - нолики
+ */
+
+public class new3 {
+
+    public static void main(String[] args) {
+        Random rnd = new Random();
+        Scanner scan = new Scanner(System.in);
+        char[][] arr = new char[3][3];
+        int a = 97;
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[i].length; j++) {
+                arr[i][j] = (char) a;
+                a++;
+            }
+        }
+        for (char[] var : arr) {
+            for (char var2 : var) {
+                System.out.print(var2 + " | ");
+            }
+            System.out.println("");
+            System.out.print("-   -   -");
+            System.out.println("");
+        }
+        int hod = 0;
+        while (hod < 10) {
+            hod++;
+            System.out.print("Выберите куда поставить крестик: ");
+            char b = scan.nextLine().charAt(0);
+            for (int i = 0; i < arr.length; i++) {
+                for (int j = 0; j < arr[i].length; j++) {
+                    if (arr[i][j] == b) {
+                        arr[i][j] = (char) 120;
+                    }
+                }
+            }
+            // Проверка на победу
+            for (int i = 0, j = 0; i < arr.length; i++) {
+                if (arr[i][j] == arr[i][j + 1] && arr[i][j] == arr[i][j + 2]) {
+                    System.out.println("Победили Крестики =)");
+                    hod = 11;
+                }
+            }
+            for (int i = 0, j = 0; j < arr[i].length; j++) {
+                if (arr[i][j] == arr[i + 1][j] && arr[i][j] == arr[i + 2][j]) {
+                    System.out.println("Победили Крестики =)");
+                    hod = 11;
+                }
+            }
+            for (int i = 0, j = 0; i<1; i++) {
+                if (arr[i][j] == arr[i + 1][j + 1] && arr[i][j] == arr[i + 2][j + 2]) {
+                    System.out.println("Победили Крестики =)");
+                    hod = 11;
+                }
+                else if (arr[i][j+2] == arr[i + 1][j + 1] && arr[i][j] == arr[i + 2][j]) {
+                    System.out.println("Победили Крестики =)");
+                    hod = 11;
+                }
+            }
+
+            for (char[] var : arr) {
+                for (char var2 : var) {
+                    System.out.print(var2 + " | ");
+                }
+                System.out.println("");
+                System.out.print("-   -   -");
+                System.out.println("");
+            }
+            if (hod > 10)
+                break;
+            hod++;
+            System.out.print("Выберите куда поставить нолик: ");
+            b = scan.nextLine().charAt(0);
+            for (int i = 0; i < arr.length; i++) {
+                for (int j = 0; j < arr[i].length; j++) {
+                    if (arr[i][j] == b) {
+                        arr[i][j] = (char) 111;
+                    }
+                }
+            }
+            // Проверка на победу
+            for (int i = 0, j = 0; i < arr.length; i++) {
+                if (arr[i][j] == arr[i][j + 1] && arr[i][j] == arr[i][j + 2]) {
+                    System.out.println("Победили Нолики =)");
+                    hod = 11;
+                }
+            }
+            for (int i = 0, j = 0; j < arr[i].length; j++) {
+                if (arr[i][j] == arr[i + 1][j] && arr[i][j] == arr[i + 2][j]) {
+                    System.out.println("Победили Нолики =)");
+                    hod = 11;
+                }
+            }
+            for (int i = 0, j = 0; i<1; i++) {
+                if (arr[i][j] == arr[i + 1][j + 1] && arr[i][j] == arr[i + 2][j + 2]) {
+                    System.out.println("Победили Нолики =)");
+                    hod = 11;
+                }
+                else if (arr[i][j+2] == arr[i + 1][j + 1] && arr[i][j] == arr[i + 2][j]) {
+                    System.out.println("Победили Нолики =)");
+                    hod = 11;
+                }
+            }
+            for (char[] var : arr) {
+                for (char var2 : var) {
+                    System.out.print(var2 + " | ");
+                }
+                System.out.println("");
+                System.out.print("-   -   -");
+                System.out.println("");
+            }
+            if (hod > 10)
+                break;
+        }
+        if (hod == 10)
+        System.out.println("Победила дружба");
+    }
+}
+
